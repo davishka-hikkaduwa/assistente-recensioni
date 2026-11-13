@@ -1,14 +1,15 @@
-async function caricaAirbnb() {
-	const risposta = await fetch('data/airbnb.json');
+async function caricaRecensioni(percorso) {
+	const risposta = await fetch(percorso);
 	const recensioni = await risposta.json();
-	console.log(recensioni);
+	return recensioni;
 }
 
-async function caricaBooking() {
-	const risposta = await fetch('data/booking.json');
-	const recensioni = await risposta.json();
-	console.log(recensioni);
+async function avvia() {
+	const airbnb = await caricaRecensioni('data/airbnb.json');
+	const booking = await caricaRecensioni('data/booking.json');
+
+	console.log(airbnb);
+	console.log(booking);
 }
 
-caricaAirbnb();
-caricaBooking();
+avvia();
