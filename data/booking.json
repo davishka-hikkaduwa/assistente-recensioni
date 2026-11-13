@@ -1,0 +1,50 @@
+[
+  {
+    "id": "bkng_0001",
+    "reservationNumber": "T682GR",
+    "propertyName": "Brera Suite",
+    "reviewerName": "Giulia",
+    "score": 4,
+    "positive": "Posizione centrale.",
+    "negative": "Il riscaldamento non funzionava e nessuno ha risposto al telefono la sera.",
+    "reviewDate": "2026-11-04",
+    "language": "it",
+    "replied": false
+  },
+  {
+    "id": "bkng_0002",
+    "reservationNumber": "R4M8QZ",
+    "propertyName": "Navigli Loft",
+    "reviewerName": "Marco",
+    "score": 9,
+    "positive": "Appartamento elegante, check-in semplicissimo.",
+    "negative": "",
+    "reviewDate": "2026-11-06",
+    "language": "it",
+    "replied": true
+  },
+  {
+    "id": "bkng_0003",
+    "reservationNumber": "H2J5LC",
+    "propertyName": "Porta Romana Studio",
+    "reviewerName": "Claire",
+    "score": 3,
+    "positive": "",
+    "negative": "Check-in en retard d'une heure, personne ne répondait.",
+    "reviewDate": "2026-11-09",
+    "language": "fr",
+    "replied": false
+  },
+  {
+    "id": "bkng_0004",
+    "reservationNumber": "W3E9SK",
+    "propertyName": "Brera Suite",
+    "reviewerName": "Kenji",
+    "score": 10,
+    "positive": "Perfect stay, beautiful design and very quiet.",
+    "negative": "",
+    "reviewDate": "2026-11-11",
+    "language": "en",
+    "replied": false
+  }
+]

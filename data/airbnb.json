@@ -1,0 +1,46 @@
+[
+  {
+    "id": "abnb_0001",
+    "confirmationCode": "U6T67H",
+    "listingName": "Navigli Loft",
+    "guestName": "Sophie",
+    "rating": 5,
+    "comment": "Beautiful loft, super clean and close to the canals. Host very responsive!",
+    "createdAt": "2026-11-02",
+    "language": "en",
+    "hostResponse": null
+  },
+  {
+    "id": "abnb_0002",
+    "confirmationCode": "K9P2XW",
+    "listingName": "Porta Romana Studio",
+    "guestName": "Lukas",
+    "rating": 2,
+    "comment": "Die Wohnung war nicht sauber und das WLAN funktionierte nicht.",
+    "createdAt": "2026-11-05",
+    "language": "de",
+    "hostResponse": null
+  },
+  {
+    "id": "abnb_0003",
+    "confirmationCode": "B7N3VD",
+    "listingName": "Brera Suite",
+    "guestName": "Emma",
+    "rating": 4,
+    "comment": "Great location, but the street was a bit noisy at night.",
+    "createdAt": "2026-11-07",
+    "language": "en",
+    "hostResponse": "Thank you Emma! We'll add earplugs to the welcome kit."
+  },
+  {
+    "id": "abnb_0004",
+    "confirmationCode": "Q8F1YT",
+    "listingName": "Navigli Loft",
+    "guestName": "Marco",
+    "rating": 1,
+    "comment": "Doccia rotta e acqua fredda per due giorni.",
+    "createdAt": "2026-11-10",
+    "language": "it",
+    "hostResponse": null
+  }
+]
