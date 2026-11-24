@@ -87,14 +87,27 @@ async function avvia() {
 
 function aggiornaTabella() {
 	const soloUrgenti = document.querySelector('#filtro-urgenti').checked;
+	const soloSenzaRisposta = document.querySelector(
+		'#filtro-senza-risposta'
+	).checked;
 
-	const daMostrare = soloUrgenti
-		? recensioni.filter((r) => r.voto <= 4)
-		: recensioni;
+	let daMostrare = recensioni;
 
+	if (soloUrgenti) {
+		daMostrare = daMostrare.filter((r) => r.voto <= 4);
+	}
+
+	if (soloSenzaRisposta) {
+		daMostrare = daMostrare.filter((r) => !r.haRisposta);
+	}
 	mostraRecensioni(daMostrare);
 }
-document.querySelector('#filtro-urgenti').addEventListener('change', avvia);
+document
+	.querySelector('#filtro-urgenti')
+	.addEventListener('change', aggiornaTabella);
+document
+	.querySelector('#filtro-senza-risposta')
+	.addEventListener('change', aggiornaTabella);
 
 document.querySelector('#sync-btn').addEventListener('click', avvia);
 lucide.createIcons();
