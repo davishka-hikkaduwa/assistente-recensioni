@@ -2,12 +2,40 @@
 <html lang="it">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Assistente Recensioni</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>Assistente Recensioni</h1>
-		<button id="sync-btn">Sincronizza</button>
-		<ul id="review-list"></ul>
+		<div class="contenitore">
+			<header class="intestazione">
+				<div>
+					<h1>Assistente Recensioni</h1>
+					<p class="sottotitolo">
+						Recensioni da Airbnb e Booking.com in un unico posto
+					</p>
+				</div>
+				<button id="sync-btn">Sincronizza</button>
+			</header>
+
+			<div class="tabella-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Data</th>
+							<th>Canale</th>
+							<th>Prenotazione</th>
+							<th>Struttura</th>
+							<th>Ospite</th>
+							<th>Voto</th>
+							<th>Testo</th>
+							<th>Risposta</th>
+						</tr>
+					</thead>
+					<tbody id="review-table-body"></tbody>
+				</table>
+			</div>
+		</div>
 
 		<script src="script.js"></script>
 	</body>

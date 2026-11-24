@@ -38,6 +38,34 @@ function normalizzaBooking(r) {
 	};
 }
 
+// ===== Visualizzazione nella tabella =====
+
+function classeVoto(voto) {
+	if (voto <= 4) return 'voto-basso'; // rosso
+	if (voto <= 7) return 'voto-medio'; // giallo
+	return 'voto-alto'; // verde
+}
+
+function mostraRecensioni(lista) {
+	const tbody = document.querySelector('#review-table-body');
+
+	const righe = lista.map(
+		(r) => `
+		<tr>
+			<td>${r.data}</td>
+			<td><span class="badge canale-${r.canale}">${r.canale}</span></td>
+			<td class="codice">${r.codicePrenotazione}</td>
+			<td>${r.struttura}</td>
+			<td>${r.ospite}</td>
+			<td><span class="badge ${classeVoto(r.voto)}">${r.voto}/10</span></td>
+			<td class="testo">${r.testo}</td>
+			<td>${r.haRisposta ? '✅' : '—'}</td>
+		</tr>`
+	);
+
+	tbody.innerHTML = righe.join('');
+}
+
 // ===== Avvio dell'app =====
 
 async function avvia() {
@@ -49,7 +77,7 @@ async function avvia() {
 	);
 
 	const tutte = [...airbnb, ...booking];
-	console.log(tutte);
+	mostraRecensioni(tutte);
 }
 
-avvia();
+document.querySelector('#sync-btn').addEventListener('click', avvia);
