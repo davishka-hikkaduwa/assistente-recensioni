@@ -1,41 +1,50 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Assistente Recensioni</title>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css"
+		/>
+
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="contenitore">
+		<main class="container">
 			<header class="intestazione">
-				<div>
+				<hgroup>
 					<h1>Assistente Recensioni</h1>
-					<p class="sottotitolo">
-						Recensioni da Airbnb e Booking.com in un unico posto
-					</p>
-				</div>
-				<select id="filtro-canale">
+					<p>Recensioni da Airbnb e Booking.com in un unico posto</p>
+				</hgroup>
+				<button id="sync-btn">
+					<i data-lucide="refresh-cw"></i>
+					Sincronizza
+				</button>
+			</header>
+
+			<div class="barra-filtri">
+				<select id="filtro-canale" aria-label="Filtra per canale">
 					<option value="tutti">Tutti i canali</option>
 					<option value="airbnb">Airbnb</option>
 					<option value="booking">Booking.com</option>
 				</select>
-				<label class="filtro">
+
+				<label>
 					<input type="checkbox" id="filtro-urgenti" />
 					Solo urgenti
 				</label>
-				<label class="filtro">
+
+				<label>
 					<input type="checkbox" id="filtro-senza-risposta" />
 					Solo senza risposta
 				</label>
-				<button id="sync-btn">
-					<!-- Sincronizza  -->
-					<i data-lucide="refresh-cw"></i>
-				</button>
-			</header>
+			</div>
 
-			<div class="tabella-wrap">
-				<table>
+			<div class="overflow-auto">
+				<table class="striped">
 					<thead>
 						<tr>
 							<th>Data</th>
@@ -51,7 +60,8 @@
 					<tbody id="review-table-body"></tbody>
 				</table>
 			</div>
-		</div>
+		</main>
+
 		<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 		<script src="script.js"></script>
 	</body>
