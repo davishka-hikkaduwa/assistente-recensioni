@@ -1,11 +1,9 @@
-lucide.createIcons();
-
 // ===== Caricamento dati =====
-
+let recensioni = [];
 async function caricaRecensioni(percorso) {
 	const risposta = await fetch(percorso);
-	const recensioni = await risposta.json();
-	return recensioni;
+	const dati = await risposta.json();
+	return dati;
 }
 
 // ===== Normalizzazione: ogni canale -> formato comune =====
@@ -83,9 +81,20 @@ async function avvia() {
 		normalizzaBooking
 	);
 
-	const tutte = [...airbnb, ...booking];
-	mostraRecensioni(tutte);
+	recensioni = [...airbnb, ...booking];
+	aggiornaTabella();
 }
+
+function aggiornaTabella() {
+	const soloUrgenti = document.querySelector('#filtro-urgenti').checked;
+
+	const daMostrare = soloUrgenti
+		? recensioni.filter((r) => r.voto <= 4)
+		: recensioni;
+
+	mostraRecensioni(daMostrare);
+}
+document.querySelector('#filtro-urgenti').addEventListener('change', avvia);
 
 document.querySelector('#sync-btn').addEventListener('click', avvia);
 lucide.createIcons();
