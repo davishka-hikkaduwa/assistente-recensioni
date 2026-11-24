@@ -150,3 +150,11 @@ tbody tr:hover {
 	background: var(--verde-bg);
 	color: var(--verde);
 }
+
+.icona-ok {
+	color: var(--verde);
+}
+
+.icona-attesa {
+	color: var(--giallo);
+}

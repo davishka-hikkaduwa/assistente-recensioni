@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 // ===== Caricamento dati =====
 
 async function caricaRecensioni(percorso) {
@@ -59,11 +61,16 @@ function mostraRecensioni(lista) {
 			<td>${r.ospite}</td>
 			<td><span class="badge ${classeVoto(r.voto)}">${r.voto}/10</span></td>
 			<td class="testo">${r.testo}</td>
-			<td>${r.haRisposta ? '✅' : '—'}</td>
+			<td>${
+				r.haRisposta
+					? '<i data-lucide="circle-check" class="icona-ok"></i>'
+					: '<i data-lucide="clock" class="icona-attesa"></i>'
+			}</td>
 		</tr>`
 	);
 
 	tbody.innerHTML = righe.join('');
+	lucide.createIcons();
 }
 
 // ===== Avvio dell'app =====
@@ -81,3 +88,4 @@ async function avvia() {
 }
 
 document.querySelector('#sync-btn').addEventListener('click', avvia);
+lucide.createIcons();
