@@ -90,6 +90,7 @@ function aggiornaTabella() {
 	const soloSenzaRisposta = document.querySelector(
 		'#filtro-senza-risposta'
 	).checked;
+	const canaleSelezionato = document.querySelector('#filtro-canale').value;
 
 	let daMostrare = recensioni;
 
@@ -100,6 +101,10 @@ function aggiornaTabella() {
 	if (soloSenzaRisposta) {
 		daMostrare = daMostrare.filter((r) => !r.haRisposta);
 	}
+
+	if (canaleSelezionato !== 'tutti') {
+		daMostrare = daMostrare.filter((r) => r.canale === canaleSelezionato);
+	}
 	mostraRecensioni(daMostrare);
 }
 document
@@ -107,6 +112,9 @@ document
 	.addEventListener('change', aggiornaTabella);
 document
 	.querySelector('#filtro-senza-risposta')
+	.addEventListener('change', aggiornaTabella);
+document
+	.querySelector('#filtro-canale')
 	.addEventListener('change', aggiornaTabella);
 
 document.querySelector('#sync-btn').addEventListener('click', avvia);
