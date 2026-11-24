@@ -1,0 +1,152 @@
+/* ===== Colori e misure riutilizzabili ===== */
+:root {
+	--sfondo: #f5f6f8;
+	--card: #ffffff;
+	--testo: #1f2430;
+	--testo-tenue: #6b7280;
+	--bordo: #e5e7eb;
+	--primario: #2f5d8a;
+
+	--rosso-bg: #fde8e8;
+	--rosso: #b42318;
+	--giallo-bg: #fef4d6;
+	--giallo: #946200;
+	--verde-bg: #e3f5e9;
+	--verde: #1b7a3d;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 32px 16px;
+	font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+	background: var(--sfondo);
+	color: var(--testo);
+}
+
+/* ===== Intestazione ===== */
+.contenitore {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.intestazione {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 1.6rem;
+}
+
+.sottotitolo {
+	margin: 4px 0 0;
+	color: var(--testo-tenue);
+}
+
+button {
+	padding: 10px 18px;
+	border: none;
+	border-radius: 8px;
+	background: var(--primario);
+	color: white;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+button:hover {
+	filter: brightness(1.1);
+}
+
+/* ===== Tabella ===== */
+.tabella-wrap {
+	overflow-x: auto;
+	background: var(--card);
+	border: 1px solid var(--bordo);
+	border-radius: 12px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.92rem;
+}
+
+th,
+td {
+	padding: 12px 14px;
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid var(--bordo);
+}
+
+th {
+	background: #fafafa;
+	color: var(--testo-tenue);
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+tbody tr:last-child td {
+	border-bottom: none;
+}
+
+tbody tr:hover {
+	background: #f9fafb;
+}
+
+.codice {
+	font-family: ui-monospace, monospace;
+	color: var(--testo-tenue);
+}
+
+.testo {
+	min-width: 280px;
+	line-height: 1.4;
+}
+
+/* ===== Etichette (badge) ===== */
+.badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.canale-airbnb {
+	background: #ffe8ec;
+	color: #c2185b;
+}
+
+.canale-booking {
+	background: #e3ecfa;
+	color: #1d4e9e;
+}
+
+/* ===== Voto: tre colori ===== */
+.voto-basso {
+	background: var(--rosso-bg);
+	color: var(--rosso);
+}
+
+.voto-medio {
+	background: var(--giallo-bg);
+	color: var(--giallo);
+}
+
+.voto-alto {
+	background: var(--verde-bg);
+	color: var(--verde);
+}
