@@ -2,6 +2,11 @@ import { caricaTutte } from './dati.js';
 import { classeVoto } from './ui.js';
 import { creaBozza } from './bozze.js';
 
+function impostaBottone(bottone, icona, testo) {
+	bottone.innerHTML = `<i data-lucide="${icona}"></i> <span>${testo}</span>`;
+	lucide.createIcons();
+}
+
 async function avvia() {
 	const parametri = new URLSearchParams(window.location.search);
 	const id = parametri.get('id');
@@ -39,11 +44,18 @@ async function avvia() {
 
 	bottoneCopia.addEventListener('click', async () => {
 		const testo = document.querySelector('#bozza').value;
-		await navigator.clipboard.writeText(testo);
 
-		bottoneCopia.textContent = 'Copiato!';
+		try {
+			await navigator.clipboard.writeText(testo);
+			impostaBottone(bottoneCopia, 'check', 'Copiato!');
+			bottoneCopia.classList.add('copiato');
+		} catch (errore) {
+			impostaBottone(bottoneCopia, 'x', 'Copia non riuscita');
+		}
+
 		setTimeout(() => {
-			bottoneCopia.textContent = 'Copia bozza';
+			impostaBottone(bottoneCopia, 'copy', 'Copia bozza');
+			bottoneCopia.classList.remove('copiato');
 		}, 2000);
 	});
 }

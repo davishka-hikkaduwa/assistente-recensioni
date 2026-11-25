@@ -106,3 +106,8 @@ td {
 .icona-attesa {
 	color: var(--giallo);
 }
+
+#copia-btn.copiato {
+	--pico-background-color: var(--verde);
+	--pico-border-color: var(--verde);
+}
