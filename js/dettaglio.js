@@ -1,5 +1,6 @@
 import { caricaTutte } from './dati.js';
 import { classeVoto } from './ui.js';
+import { creaBozza } from './bozze.js';
 
 async function avvia() {
 	const parametri = new URLSearchParams(window.location.search);
@@ -24,6 +25,8 @@ async function avvia() {
 		</header>
 		<span class="badge ${classeVoto(recensione.voto)}">${recensione.voto}/10</span>
 		<p>${recensione.testo}</p>
+		<label for="bozza">Bozza di risposta:</label>
+		<textarea id="bozza" rows="10">${creaBozza(recensione)}</textarea>
 	`;
 }
 
