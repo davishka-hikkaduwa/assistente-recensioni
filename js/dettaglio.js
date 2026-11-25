@@ -27,7 +27,25 @@ async function avvia() {
 		<p>${recensione.testo}</p>
 		<label for="bozza">Bozza di risposta:</label>
 		<textarea id="bozza" rows="10">${creaBozza(recensione)}</textarea>
-	`;
+		<button id="copia-btn">
+		<i data-lucide="copy"></i>
+		Copia bozza
+		</button>
+		`;
+
+	lucide.createIcons();
+
+	const bottoneCopia = document.querySelector('#copia-btn');
+
+	bottoneCopia.addEventListener('click', async () => {
+		const testo = document.querySelector('#bozza').value;
+		await navigator.clipboard.writeText(testo);
+
+		bottoneCopia.textContent = 'Copiato!';
+		setTimeout(() => {
+			bottoneCopia.textContent = 'Copia bozza';
+		}, 2000);
+	});
 }
 
 avvia();
