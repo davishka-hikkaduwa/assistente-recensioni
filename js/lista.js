@@ -1,16 +1,11 @@
 import { caricaTutte } from './dati.js';
+import { classeVoto } from './ui.js';
 
 // ===== Stato della pagina =====
 
 let recensioni = [];
 
 // ===== Visualizzazione nella tabella =====
-
-function classeVoto(voto) {
-	if (voto <= 4) return 'voto-basso'; // rosso
-	if (voto <= 7) return 'voto-medio'; // giallo
-	return 'voto-alto'; // verde
-}
 
 function mostraRecensioni(lista) {
 	const tbody = document.querySelector('#review-table-body');
@@ -28,7 +23,8 @@ function mostraRecensioni(lista) {
 			<td>${
 				r.haRisposta
 					? '<i data-lucide="circle-check" class="icona-ok"></i>'
-					: '<i data-lucide="clock" class="icona-attesa"></i>'
+					: `<i data-lucide="clock" class="icona-attesa"></i>
+		   <a href="recensione.html?id=${r.id}">Rispondi</a>`
 			}</td>
 		</tr>`
 	);
