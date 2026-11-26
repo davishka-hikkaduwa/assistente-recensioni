@@ -1,3 +1,5 @@
+import { leggiInviate } from './stato.js';
+
 // ===== Caricamento =====
 
 async function caricaRecensioni(percorso) {
@@ -48,5 +50,11 @@ export async function caricaTutte() {
 		normalizzaBooking
 	);
 
-	return [...airbnb, ...booking];
+	const inviate = leggiInviate();
+	const tutte = [...airbnb, ...booking];
+
+	return tutte.map((r) => ({
+		...r,
+		haRisposta: r.haRisposta || inviate.includes(r.id),
+	}));
 }
