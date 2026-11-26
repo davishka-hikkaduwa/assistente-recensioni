@@ -1,5 +1,5 @@
 import { caricaTutte } from './dati.js';
-import { classeVoto } from './ui.js';
+import { classeVoto, badgeCanale } from './ui.js';
 import { creaBozza } from './bozze.js';
 
 function impostaBottone(bottone, icona, testo) {
@@ -24,7 +24,7 @@ async function avvia() {
 	contenitore.innerHTML = `
 		<header>
 			<h2>${recensione.ospite}</h2>
-			<p>${recensione.struttura} · ${recensione.canale} · ${
+			<p>${recensione.struttura} · ${badgeCanale(recensione.canale)} · ${
 		recensione.codicePrenotazione
 	} · ${recensione.data}</p>
 		</header>
