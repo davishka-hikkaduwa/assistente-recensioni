@@ -3,6 +3,13 @@ export const NOMI_CANALI = {
 	booking: 'Booking.com',
 };
 
+export function formattaMedia(media, scala) {
+	if (media === null) return '—';
+
+	const valore = media / (10 / scala);
+	return `${valore.toFixed(1)}/${scala}`;
+}
+
 function classeVoto(voto) {
 	if (voto <= 4) return 'voto-basso'; // rosso
 	if (voto <= 7) return 'voto-medio'; // giallo

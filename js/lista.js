@@ -1,5 +1,5 @@
 import { caricaTutte } from './dati.js';
-import { badgeCanale, badgeVoto, NOMI_CANALI } from './ui.js';
+import { badgeCanale, badgeVoto, formattaMedia, NOMI_CANALI } from './ui.js';
 import { calcolaMedia, contaInAttesa, mediaCanale } from './statistiche.js';
 
 // ===== Stato della pagina =====
@@ -19,13 +19,13 @@ function mostraRecensioni(lista) {
 			<td class="codice">${r.codicePrenotazione}</td>
 			<td>${r.struttura}</td>
 			<td>${r.ospite}</td>
-			<td><td>${badgeVoto(r)}</td></td>
+			<td>${badgeVoto(r)}</td>
 			<td class="testo">${r.testo}</td>
 			<td>${
 				r.haRisposta
 					? '<i data-lucide="circle-check" class="icona-ok"></i>'
 					: `<i data-lucide="clock" class="icona-attesa"></i>
-		   <a href="recensione.html?id=${r.id}">Rispondi</a>`
+					   <a href="recensione.html?id=${r.id}">Rispondi</a>`
 			}</td>
 		</tr>`
 	);
@@ -37,36 +37,35 @@ function mostraRecensioni(lista) {
 // ===== Statistiche =====
 
 function mostraStatistiche(lista) {
-	const media = calcolaMedia(lista);
-	const inAttesa = contaInAttesa(lista);
-	const mediaAirbnb = mediaCanale(lista, 'airbnb') / 2;
-	const mediaBooking = mediaCanale(lista, 'booking');
 	const canale = document.querySelector('#filtro-canale').value;
+	const soloUrgenti = document.querySelector('#filtro-urgenti').checked;
+	const soloSenzaRisposta = document.querySelector(
+		'#filtro-senza-risposta'
+	).checked;
 
-	document.querySelector('#stat-media').textContent = `${media.toFixed(
-		1
-	)}/10`;
-	document.querySelector('#stat-attesa').textContent = inAttesa;
-	document.querySelector('#stat-airbnb').textContent = `${mediaAirbnb.toFixed(
-		1
-	)}/5`;
-	document.querySelector(
-		'#stat-booking'
-	).textContent = `${mediaBooking.toFixed(1)}/10`;
+	// Valori dei riquadri
+	document.querySelector('#stat-media').textContent = formattaMedia(
+		calcolaMedia(lista),
+		10
+	);
+	document.querySelector('#stat-attesa').textContent = contaInAttesa(lista);
+	document.querySelector('#stat-airbnb').textContent = formattaMedia(
+		mediaCanale(lista, 'airbnb'),
+		5
+	);
+	document.querySelector('#stat-booking').textContent = formattaMedia(
+		mediaCanale(lista, 'booking'),
+		10
+	);
 
+	// Riquadri visibili in base al canale
 	document.querySelector('#card-media').hidden = canale !== 'tutti';
 	document.querySelector('#card-airbnb').hidden =
 		canale !== 'tutti' && canale !== 'airbnb';
 	document.querySelector('#card-booking').hidden =
 		canale !== 'tutti' && canale !== 'booking';
 
-	// ===== Didascalia dei filtri =====
-
-	const soloUrgenti = document.querySelector('#filtro-urgenti').checked;
-	const soloSenzaRisposta = document.querySelector(
-		'#filtro-senza-risposta'
-	).checked;
-
+	// Didascalia dei filtri
 	const parti = [];
 
 	if (canale !== 'tutti') parti.push(NOMI_CANALI[canale]);
@@ -100,8 +99,6 @@ function aggiornaTabella() {
 	if (canaleSelezionato !== 'tutti') {
 		daMostrare = daMostrare.filter((r) => r.canale === canaleSelezionato);
 	}
-	console.log(soloUrgenti);
-	console.log(soloSenzaRisposta);
 
 	mostraRecensioni(daMostrare);
 	mostraStatistiche(daMostrare);
@@ -111,11 +108,6 @@ function aggiornaTabella() {
 
 async function avvia() {
 	recensioni = await caricaTutte();
-	// console.log('Media:', calcolaMedia(recensioni));
-	// console.log('In attesa:', contaInAttesa(recensioni));
-	// console.log('Media Airbnb:', mediaCanale(recensioni, 'airbnb'));
-	// console.log('Media Booking:', mediaCanale(recensioni, 'booking'));
-
 	aggiornaTabella();
 }
 
@@ -131,5 +123,4 @@ document
 	.addEventListener('change', aggiornaTabella);
 
 lucide.createIcons();
-
 avvia();

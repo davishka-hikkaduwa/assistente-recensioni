@@ -1,5 +1,5 @@
 export function calcolaMedia(lista) {
-	if (lista.length === 0) return 0;
+	if (lista.length === 0) return null;
 
 	const somma = lista.reduce((totale, r) => totale + r.voto, 0);
 
