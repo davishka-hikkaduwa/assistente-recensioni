@@ -1,5 +1,5 @@
 import { caricaTutte } from './dati.js';
-import { classeVoto, badgeCanale } from './ui.js';
+import { badgeCanale, badgeVoto } from './ui.js';
 
 // ===== Stato della pagina =====
 
@@ -18,7 +18,7 @@ function mostraRecensioni(lista) {
 			<td class="codice">${r.codicePrenotazione}</td>
 			<td>${r.struttura}</td>
 			<td>${r.ospite}</td>
-			<td><span class="badge ${classeVoto(r.voto)}">${r.voto}/10</span></td>
+			<td><td>${badgeVoto(r)}</td></td>
 			<td class="testo">${r.testo}</td>
 			<td>${
 				r.haRisposta

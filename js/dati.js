@@ -17,6 +17,8 @@ function normalizzaAirbnb(r) {
 		codicePrenotazione: r.confirmationCode,
 		struttura: r.listingName,
 		ospite: r.guestName,
+		votoOriginale: r.rating,
+		scalaOriginale: 5,
 		voto: r.rating * 2, // Airbnb: scala 1-5 -> 1-10
 		testo: r.comment,
 		data: r.createdAt,
@@ -32,6 +34,8 @@ function normalizzaBooking(r) {
 		codicePrenotazione: r.reservationNumber,
 		struttura: r.propertyName,
 		ospite: r.reviewerName,
+		votoOriginale: r.score,
+		scalaOriginale: 10,
 		voto: r.score, // Booking.com: già su scala 1-10
 		testo: [r.positive, r.negative].filter((t) => t !== '').join(' / '),
 		data: r.reviewDate,

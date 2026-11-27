@@ -1,5 +1,5 @@
 import { caricaTutte } from './dati.js';
-import { classeVoto, badgeCanale } from './ui.js';
+import { badgeCanale, badgeVoto } from './ui.js';
 import { creaBozza } from './bozze.js';
 import { segnaInviata } from './stato.js';
 
@@ -29,7 +29,7 @@ async function avvia() {
 		recensione.codicePrenotazione
 	} · ${recensione.data}</p>
 		</header>
-		<span class="badge ${classeVoto(recensione.voto)}">${recensione.voto}/10</span>
+		<td>${badgeVoto(r)}</td>
 		<p>${recensione.testo}</p>
 		<label for="bozza">Bozza di risposta:</label>
 		<textarea id="bozza" rows="10">${creaBozza(recensione)}</textarea>
