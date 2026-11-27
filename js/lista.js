@@ -1,5 +1,6 @@
 import { caricaTutte } from './dati.js';
 import { badgeCanale, badgeVoto } from './ui.js';
+import { calcolaMedia, contaInAttesa, mediaCanale } from './statistiche.js';
 
 // ===== Stato della pagina =====
 
@@ -63,6 +64,10 @@ function aggiornaTabella() {
 
 async function avvia() {
 	recensioni = await caricaTutte();
+	console.log('Media:', calcolaMedia(recensioni));
+	console.log('In attesa:', contaInAttesa(recensioni));
+	console.log('Media Airbnb:', mediaCanale(recensioni, 'airbnb'));
+	console.log('Media Booking:', mediaCanale(recensioni, 'booking'));
 	aggiornaTabella();
 }
 
