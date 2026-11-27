@@ -29,7 +29,7 @@ async function avvia() {
 		recensione.codicePrenotazione
 	} · ${recensione.data}</p>
 		</header>
-		<td>${badgeVoto(r)}</td>
+		<td>${badgeVoto(recensione)}</td>
 		<p>${recensione.testo}</p>
 		<label for="bozza">Bozza di risposta:</label>
 		<textarea id="bozza" rows="10">${creaBozza(recensione)}</textarea>
