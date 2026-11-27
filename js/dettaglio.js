@@ -1,6 +1,7 @@
 import { caricaTutte } from './dati.js';
 import { classeVoto, badgeCanale } from './ui.js';
 import { creaBozza } from './bozze.js';
+import { segnaInviata } from './stato.js';
 
 function impostaBottone(bottone, icona, testo) {
 	bottone.innerHTML = `<i data-lucide="${icona}"></i> <span>${testo}</span>`;
@@ -35,7 +36,14 @@ async function avvia() {
 		<button id="copia-btn">
 		<i data-lucide="copy"></i>
 		Copia bozza
-		</button>
+		</button> ${
+			recensione.haRisposta
+				? '<p class="icona-ok"><i data-lucide="circle-check"></i> Risposta già inviata</p>'
+				: `<button id="inviata-btn" class="secondary">
+						<i data-lucide="send"></i>
+						<span>Segna come inviata</span>
+				   </button>`
+		}
 		`;
 
 	lucide.createIcons();
@@ -58,6 +66,15 @@ async function avvia() {
 			bottoneCopia.classList.remove('copiato');
 		}, 2000);
 	});
+
+	const bottoneInviata = document.querySelector('#inviata-btn');
+
+	if (bottoneInviata) {
+		bottoneInviata.addEventListener('click', () => {
+			segnaInviata(recensione.id);
+			window.location.href = 'index.html';
+		});
+	}
 }
 
 avvia();

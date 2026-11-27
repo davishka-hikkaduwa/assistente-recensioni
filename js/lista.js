@@ -78,3 +78,5 @@ document
 	.addEventListener('change', aggiornaTabella);
 
 lucide.createIcons();
+
+avvia();
