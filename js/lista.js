@@ -61,7 +61,6 @@ function mostraStatistiche(lista) {
 	document.querySelector('#card-booking').hidden =
 		canale !== 'tutti' && canale !== 'booking';
 }
-s;
 
 // ===== Filtri =====
 
