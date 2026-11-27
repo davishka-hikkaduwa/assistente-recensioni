@@ -52,7 +52,16 @@ function mostraStatistiche(lista) {
 	document.querySelector(
 		'#stat-booking'
 	).textContent = `${mediaBooking.toFixed(1)}/10`;
+
+	const canale = document.querySelector('#filtro-canale').value;
+
+	document.querySelector('#card-media').hidden = canale !== 'tutti';
+	document.querySelector('#card-airbnb').hidden =
+		canale !== 'tutti' && canale !== 'airbnb';
+	document.querySelector('#card-booking').hidden =
+		canale !== 'tutti' && canale !== 'booking';
 }
+s;
 
 // ===== Filtri =====
 
