@@ -111,3 +111,9 @@ td {
 	--pico-background-color: var(--verde);
 	--pico-border-color: var(--verde);
 }
+
+.statistiche p {
+	margin: 0;
+	font-size: 1.8rem;
+	font-weight: 700;
+}

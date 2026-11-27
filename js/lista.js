@@ -34,6 +34,26 @@ function mostraRecensioni(lista) {
 	lucide.createIcons();
 }
 
+// ===== Statistiche =====
+
+function mostraStatistiche(lista) {
+	const media = calcolaMedia(lista);
+	const inAttesa = contaInAttesa(lista);
+	const mediaAirbnb = mediaCanale(lista, 'airbnb') / 2;
+	const mediaBooking = mediaCanale(lista, 'booking');
+
+	document.querySelector('#stat-media').textContent = `${media.toFixed(
+		1
+	)}/10`;
+	document.querySelector('#stat-attesa').textContent = inAttesa;
+	document.querySelector('#stat-airbnb').textContent = `${mediaAirbnb.toFixed(
+		1
+	)}/5`;
+	document.querySelector(
+		'#stat-booking'
+	).textContent = `${mediaBooking.toFixed(1)}/10`;
+}
+
 // ===== Filtri =====
 
 function aggiornaTabella() {
@@ -58,6 +78,7 @@ function aggiornaTabella() {
 	}
 
 	mostraRecensioni(daMostrare);
+	mostraStatistiche(daMostrare);
 }
 
 // ===== Avvio =====
