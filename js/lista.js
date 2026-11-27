@@ -1,5 +1,5 @@
 import { caricaTutte } from './dati.js';
-import { badgeCanale, badgeVoto } from './ui.js';
+import { badgeCanale, badgeVoto, NOMI_CANALI } from './ui.js';
 import { calcolaMedia, contaInAttesa, mediaCanale } from './statistiche.js';
 
 // ===== Stato della pagina =====
@@ -41,6 +41,7 @@ function mostraStatistiche(lista) {
 	const inAttesa = contaInAttesa(lista);
 	const mediaAirbnb = mediaCanale(lista, 'airbnb') / 2;
 	const mediaBooking = mediaCanale(lista, 'booking');
+	const canale = document.querySelector('#filtro-canale').value;
 
 	document.querySelector('#stat-media').textContent = `${media.toFixed(
 		1
@@ -53,13 +54,28 @@ function mostraStatistiche(lista) {
 		'#stat-booking'
 	).textContent = `${mediaBooking.toFixed(1)}/10`;
 
-	const canale = document.querySelector('#filtro-canale').value;
-
 	document.querySelector('#card-media').hidden = canale !== 'tutti';
 	document.querySelector('#card-airbnb').hidden =
 		canale !== 'tutti' && canale !== 'airbnb';
 	document.querySelector('#card-booking').hidden =
 		canale !== 'tutti' && canale !== 'booking';
+
+	// ===== Didascalia dei filtri =====
+
+	const soloUrgenti = document.querySelector('#filtro-urgenti').checked;
+	const soloSenzaRisposta = document.querySelector(
+		'#filtro-senza-risposta'
+	).checked;
+
+	const parti = [];
+
+	if (canale !== 'tutti') parti.push(NOMI_CANALI[canale]);
+	if (soloUrgenti) parti.push('solo urgenti');
+	if (soloSenzaRisposta) parti.push('solo senza risposta');
+
+	const didascalia = document.querySelector('#stat-filtri');
+	didascalia.textContent = `Statistiche su: ${parti.join(' · ')}`;
+	didascalia.hidden = parti.length === 0;
 }
 
 // ===== Filtri =====
@@ -84,6 +100,8 @@ function aggiornaTabella() {
 	if (canaleSelezionato !== 'tutti') {
 		daMostrare = daMostrare.filter((r) => r.canale === canaleSelezionato);
 	}
+	console.log(soloUrgenti);
+	console.log(soloSenzaRisposta);
 
 	mostraRecensioni(daMostrare);
 	mostraStatistiche(daMostrare);
@@ -93,10 +111,11 @@ function aggiornaTabella() {
 
 async function avvia() {
 	recensioni = await caricaTutte();
-	console.log('Media:', calcolaMedia(recensioni));
-	console.log('In attesa:', contaInAttesa(recensioni));
-	console.log('Media Airbnb:', mediaCanale(recensioni, 'airbnb'));
-	console.log('Media Booking:', mediaCanale(recensioni, 'booking'));
+	// console.log('Media:', calcolaMedia(recensioni));
+	// console.log('In attesa:', contaInAttesa(recensioni));
+	// console.log('Media Airbnb:', mediaCanale(recensioni, 'airbnb'));
+	// console.log('Media Booking:', mediaCanale(recensioni, 'booking'));
+
 	aggiornaTabella();
 }
 

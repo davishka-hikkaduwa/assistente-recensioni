@@ -1,4 +1,4 @@
-const NOMI_CANALI = {
+export const NOMI_CANALI = {
 	airbnb: 'Airbnb',
 	booking: 'Booking.com',
 };
